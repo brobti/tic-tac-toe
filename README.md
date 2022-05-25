@@ -1,8 +1,23 @@
 # 05 OpenManipulator - Amőba
 
+A projekt a BME-MOGI Kognitív robotika és Robotrendszerek laboratórium tantárgyak projektfeladataként valósult meg.
+
+Fejlesztők:
+
+Bartalos Róbert
+Dobó Viktor
+Galovics Bálint
+Szabó Bendegúz
+
+Oktatók:
+
+Dudás Dávid
+Nagy Balázs
+
+
 ## Migrálás, setup
 
-A BME-MOGI Mesterséges Intelligencia és Kognitív Robotika Laboratóriumában található Ubuntu 20.04.3 operációs rendszert futtató desktop gépre telepítésre került a ROS Noetic (1.15.13) disztribúciója a Telemanipulátor projekt migrálása céljából. A ROBOTIS hivatalos honlapja alapján telepítettük az OpenManipulatort.
+A BME-MOGI Mesterséges Intelligencia és Kognitív Robotika Laboratóriumában található Ubuntu 20.04.3 operációs rendszert futtató desktop gépre telepítésre került a ROS Noetic (1.15.13) disztribúciója egy korábbi Telemanipulátor projekt migrálása céljából. A ROBOTIS hivatalos honlapja alapján telepítettük az OpenManipulatort.
 
 https://emanual.robotis.com/docs/en/platform/openmanipulator_x/overview/
 
