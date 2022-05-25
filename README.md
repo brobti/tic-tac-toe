@@ -25,7 +25,7 @@ A BME-MOGI Mesterséges Intelligencia és Kognitív Robotika Laboratóriumában 
 
 https://emanual.robotis.com/docs/en/platform/openmanipulator_x/overview/
 
-A felhasznált, eredeti csomagok telepítési utasításai (Az áthúzott package-ek a telepítéshez nem szükségesek, mert ezek helyett saját repository-t használtunk):
+A felhasznált, eredeti csomagok telepítési utasításai:
 ```
 sudo apt install ros-noetic-ros-controllers 
 ```
@@ -51,7 +51,7 @@ sudo apt install ros-noetic-joint-state-publisher-gui
 sudo apt install ros-noetic-robotis-manipulator
 ```
 ```
-<del>git clone -b noetic-devel https://github.com/ROBOTIS-GIT/open_manipulator.git</del>
+git clone -b noetic-devel https://github.com/ROBOTIS-GIT/open_manipulator.git
 ```
 ```
 git clone -b noetic-devel https://github.com/ROBOTIS-GIT/open_manipulator_msgs.git
@@ -63,7 +63,7 @@ git clone -b noetic-devel https://github.com/ROBOTIS-GIT/open_manipulator_simula
 git clone https://github.com/ROBOTIS-GIT/open_manipulator_dependencies.git
 ```
 ```
-<del>git clone https://github.com/ROBOTIS-GIT/open_manipulator_controls.git</del>
+<git clone https://github.com/ROBOTIS-GIT/open_manipulator_controls.git
 ```
 
 ## Amőbázó robot
@@ -73,7 +73,7 @@ A játék pályája 3x3-as, a robot emellől veszi fel a bábukat, 4 kéket és 
 ### További szükséges package-ek
 A fentebb felsorolt repositorykon kívül három további került telepítésre.
 ```
-<del>git clone https://github.com/MOGI-ROS/open_manipulator_tools.git</del>
+git clone https://github.com/MOGI-ROS/open_manipulator_tools.git
 ```
 ```
 git clone https://github.com/MOGI-ROS/gazebo_ros_link_attacher.git
