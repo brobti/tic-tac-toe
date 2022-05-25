@@ -263,5 +263,5 @@ open_manipulator_tools/scripts/inverse_kinematics.py
 - [ ] A módosított scriptek kiszervezése különálló csomagba.
 - [ ] Ember-robot játék megvalósítása.
 - [ ] Színfelismerés javítása, hogy bármilyen pozícióban meg tudja határozni, hogy a látóterében lévő tárgy milyen koordinátán van.
-- [ ] Robot mozgásának folyamatosabbá tétele egy jobb, pályakövető szabályozással.
+- [ ] A robot mozgásának folyamatosabbá tétele egy jobb, pályakövető szabályozással.
 - [ ] A robot az utolsó lépés után megáll hibaüzenettel, mert nincs több bábu. Valamilyen elegánsabb megoldással ez kiküszöbölhető lenne.
