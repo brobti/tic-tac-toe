@@ -227,7 +227,6 @@ open_manipulator_tools/scripts/inverse_kinematics.py
 - gazeboban a robot megfogója open állapotban ugrál, closed állapotban nem
 - gravity compensationhöz Dynamixel Wizardban kéne beállítani valamit, amit nem tudtam telepíteni (nekünk nem is feltétlen kell)
 ## To do
-- [ ] kép a színfelismerésről
 - [ ] bugok szekció átdolgozása/kitörlése
 ## Fejlesztési lehetőségek
 - [ ] A módosított scriptek kiszervezése különálló package-be
