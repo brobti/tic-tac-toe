@@ -2,7 +2,9 @@
 
 ## Migrálás, setup
 
-A BME-MOGI Mesterséges Intelligencia és Kognitív Robotika Laboratóriumában található Ubuntu 20.04.3 operációs rendszert futtató desktop gépre telepítésre került a ROS Noetic (1.15.13) disztribúciója a Telemanipulátor projekt migrálása céljából. A ROBOTIS hivatalos honlapja alapján telepítettük az OpenManipulatort.  https://emanual.robotis.com/docs/en/platform/openmanipulator_x/overview/
+A BME-MOGI Mesterséges Intelligencia és Kognitív Robotika Laboratóriumában található Ubuntu 20.04.3 operációs rendszert futtató desktop gépre telepítésre került a ROS Noetic (1.15.13) disztribúciója a Telemanipulátor projekt migrálása céljából. A ROBOTIS hivatalos honlapja alapján telepítettük az OpenManipulatort.
+
+https://emanual.robotis.com/docs/en/platform/openmanipulator_x/overview/
 
 A felhasznált, eredeti csomagok telepítési utasításai:
 ```
