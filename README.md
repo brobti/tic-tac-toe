@@ -66,9 +66,11 @@ MoveIt!-tal:
 ## Amőbázó robot
 ### Rövid összefoglalás
 A projektünk során Robotis OpenMANIPULATOR-X robottal valósítottunk meg egy színfeismeréssel működő amőbaprogramot, aminek során a robot lejátszik magával egy amőba játszmát, és minden lépés előtt megnézi és feldolgozza a jelenlegi állást. Azért nem a korábbi lépések elmentését használtuk a következő lépés eldöntéséhez, mert így a projekt átalakítható később olyanra, ahol a robot ember ellen játszik.
-A játék pályája 3x3-as, a robot emellől veszi fel a bábukat, 4 kéket és 4 pirosat. Ezeket a Polimertechnológia Tanszék készítette el számunkra. A projekt 3 fő részből áll, a következőkben ezeken fogunk végigmenni.
+A játék pályája 3x3-as, a robot emellől veszi fel a bábukat, 4 kéket és 4 pirosat. A projekt 3 fő részből áll, a következőkben ezeken fogunk végigmenni.
 ### Forkolt repositoryk
-Kezdetben egy GitLab repositoryban próbáltunk meg dolgozni, de oda nem tudtuk forkolni a hivatalos openmanipulator repositorykat, ezért áttértünk githubra.
+- https://github.com/brobti/open_manipulator/tree/noetic-devel-mod
+- https://github.com/brobti/open_manipulator_controls/tree/telemanipulator
+- https://github.com/brobti/open_manipulator_tools
 A package-ek a dokumentum elején láthatók.
 ### Futtatás
 #### Szimuláció
@@ -158,11 +160,18 @@ Egy teljes lépés több 3 fő részből áll: Először a robot a felvétel hel
 
 ![alt text](/images/move.png?raw=true)
 
+### Modellek és alkatrészek
+A kameratartó STL modelljének forrása: https://cad.onshape.com/documents/317f41cd6ef3f111631e9f97/w/be4693711e5767f7686bfed7/e/3490ca5c51c70a615d19ad93. A kameramodell forrása: https://www.thingiverse.com/thing:2376448. A könnyebb kezelhetőség miatt a kamera és a tartó modelljeit az Inventor CAD szoftverben összeállítottuk, és a szimulációban együtt kezeltük. A robotmodellben alapértelmezetten szerepelnek a rögzítő csavarok, ezért az ütközések elkerülése érdekében a furatok átmérőjét megnöveltük.
+A kék és piros bábuk saját tervezésűek. 
+Mindhárom modellt a Blender programmal alakítottuk át .dae kiterjesztésű Collada mesh-sé. A ticTacToe_camera_test_final.world fájl ezekre hivatkozik.
+A valós robotra szerelt kameratartó és a bábuk PLA-ból készültek, FDM technológiás 3D nyomtató berendezéssel. A gyártáshoz a Polimertechnika Tanszék biztosította az eszközöket, az alapanyagot és a felkészítést.
+
 ### A szimuláció és a valós robotirányítás közti eltérések és azok magyarázata
 open_manipulator/open_manipulator_controler/scripts/ticTacToe.py
-- A gripper kinyitása és becsukása különböző range-ben állítható a szimulációban és a valóságban
+- A gripper kinyitása és becsukása különböző tartományban állítható a szimulációban és a valóságban
 - A gripperhez a valóságban nem kell `attach` és `detach` parancs a működéshez, ez csak a modellezés miatt szükséges.
 - A valóságban a gripper helyes alapállapotba állításához szükség van egy becsukás-kinyitás sorozatra.
+- A szimulációban az asztal magassága nem ismert, ezért a robotkar nem pontosan az asztallap felületén, hanem pár milliméterrel afölött helyezkedik el. Ezért a bábuk letevéséhez a valósághoz képest kicsit eltérő magassági koordinátát kellett megadni.
 
 open_manipulator/open_manipulator_controler/scripts/colorRecognition.py
 - A valóságban a bábuk más színűek, és a megvilágítás függvényében a valós színüket is másnak látja a kamera, ezért a bábuk színének RGB értékei külön vannak kódolva a két esetre.
@@ -218,6 +227,9 @@ open_manipulator_tools/scripts/inverse_kinematics.py
 - teleop_keyboard néha random lefagy -> indítsd újra a controllert és a teleop_keyboardot is!
 - gazeboban a robot megfogója open állapotban ugrál, closed állapotban nem
 - gravity compensationhöz Dynamixel Wizardban kéne beállítani valamit, amit nem tudtam telepíteni (nekünk nem is feltétlen kell)
+- A szimulált robotkar nem pontosan az asztallap felületén helyezkedik el, henem kicsivel fölötte.
+- Mivel a szimulált bábuk kinetikai modellek, és bizonyos távolságon túl a robot már nem tudja elérni a megadott letevési magasságot, a legtávolabbi sorba helyezett bábukat kicsit beleteszi az asztalba.
+- Amikor a robot a valóságban nagyobb távolságra tesz le egy bábut, a pálya egyenetlensége miatt esetenként beleütközik abba.
 ## To do
 - [ ] bugok szekció átdolgozása/kitörlése
 ## Fejlesztési lehetőségek
