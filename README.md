@@ -70,7 +70,7 @@ git clone https://github.com/MOGI-ROS/gazebo_ros_link_attacher.git
 git clone https://github.com/MOGI-ROS/open_manipulator_ikfast_plugin
 ```
 
-Az eddig felsoroltak közül hármon végeztünk módosításokat a projekt kivitelezéséhez. Ezeket forkoltuk, és létrehoztunk új brancheket a projektünknek.
+Összesen három csomagban végeztünk módosításokat a projekt kivitelezéséhez. Ezeket forkoltuk, és létrehoztunk új brancheket a projektünknek. Az amőbázó robot projekt futtatásához ezek szükségesek.
 Az általunk létrehozott branchek telepítési utasításai:
 ```
 git clone -b noetic-devel-mod https://github.com/brobti/open_manipulator.git
