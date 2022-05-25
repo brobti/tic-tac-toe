@@ -63,16 +63,7 @@ git clone -b noetic-devel https://github.com/ROBOTIS-GIT/open_manipulator_simula
 git clone https://github.com/ROBOTIS-GIT/open_manipulator_dependencies.git
 ```
 ```
-git clone telemanipulator https://github.com/ROBOTIS-GIT/open_manipulator_controls.git
-```
-```
-git clone https://github.com/MOGI-ROS/open_manipulator_tools.git
-```
-```
-git clone https://github.com/MOGI-ROS/gazebo_ros_link_attacher.git
-```
-```
-git clone https://github.com/MOGI-ROS/open_manipulator_ikfast_plugin
+git clone https://github.com/ROBOTIS-GIT/open_manipulator_controls.git
 ```
 
 ## Amőbázó robot
