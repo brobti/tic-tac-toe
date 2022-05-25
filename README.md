@@ -180,8 +180,6 @@ open_manipulator_tools/scripts/inverse_kinematics.py
     - meshes
       - hengeresBabuKek/
       - hengeresBabuPiros/
-      - camera.dae
-      - camera_stand.dae
       - hengeres_babu_kek.dae 
       - hengeres_babu_piros.dae
       - tartos_kamera.dae
@@ -214,8 +212,6 @@ open_manipulator_tools/scripts/inverse_kinematics.py
   - worlds
     - model.config
     - model.sdf
-    - ticTacToe.world
-    - ticTacToe_camera_test.world 
     - ticTacToe_camera_test_final.world
   - CMakeLists.txt
   - package.xml 
