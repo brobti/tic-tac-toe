@@ -148,7 +148,7 @@ Az algoritmus kap egy páylát és játékost (piros v. kék) bemenetként, és 
 Abban az esetben, ha valaki nyer, vagy elfogynak az asztal mellől a bábuk, a szimuláció vagy a fizikai robot megáll.
 #### Pick and place állapotautomata
 A bábuk felvétele és lerakása egy mozgássorozat következménye. A mozgássorozat lépéseinek egymás utáni lefutását egy állapotautomata szabályozza. Erre a rospy node folyamatos zavartalan futása miatt is szükség van, nem szeretnénk, hogy a node hosszabb ideig leálljon, amíg várakozik. Az állapotautomata leegyszerűsített felépítése látható az alábbi ábrán:
-![alt text](https://github.com/brobti/tic-tac-toe/images/pick-place.png)
+![alt text](/images/pick-place.png?raw=true)
 #### Move függvény
 ### A szimuláció és a valós robotirányítás közti eltérések és azok magyarázata
 ### Ismert bugok
