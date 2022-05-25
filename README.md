@@ -91,7 +91,7 @@ roslaunch open_manipulator_controller open_manipulator_controller.launch use_pla
 roslaunch open_manipulator_controllers joint_trajectory_controller.launch 
 ```
 Valós kamera elindítása:
-Feltéve, hogy a felhasznált Rasberry Pi kapcsolódik a wifi hálózatra, csatlakozzunk rá, ez lesz a '[PI terminal]':
+Feltéve, hogy a felhasznált Rasberry Pi kapcsolódik a wifi hálózatra, csatlakozzunk rá, ez lesz a `[PI terminal]`:
 
 IP: 10.0.0.11
 
@@ -101,12 +101,16 @@ Jelszó: turtlebot
 [PI terminal] ssh ubuntu@10.0.0.11
 [PI terminal] rosrun mecanum_anomaly_det StreamCam.py
 ```
+## Amőbázó robot
 ### Rövid összefoglalás
 A projektünk során Robotis OpenMANIPULATOR-X robottal valósítottunk meg egy színfeismeréssel működő amőbaprogramot, aminek során a robot lejátszik magával egy amőba játszmát, és minden lépés előtt megnézi és feldolgozza a jelenlegi állást. Azért nem a korábbi lépések elmentését használtuk a következő lépés eldöntéséhez, mert így a projekt átalakítható később olyanra, ahol a robot ember ellen játszik.
 A játék pályája 3x3-as, a robot emellől veszi fel a bábukat, 4 kéket és 4 pirosat. Ezeket a Polimertechnológia Tanszék készítette el számunkra. A projekt 3 fő részből áll, a következőkben ezeken fogunk végigmenni.
 ### Forkolt repositoryk
 Kezdetben egy GitLab repositoryban próbáltunk meg dolgozni, de oda nem tudtuk forkolni a hivatalos openmanipulator repositorykat, ezért áttértünk githubra.
 A package-ek a dokumentum elején láthatók.
+### Futtatás
+#### Szimuláció
+#### Valós robot futtatása
 ### Színfelismerés
 A színfelismeréshez kiinduló projektnek a https://github.com/MOGI-ROS/Week-5-6-Gazebo-sensors 5. pontjában használt kódból indultunk ki. A szimulált és a valós kamera a `head_camera/image_raw` Ros topic-on keresztül folyamatosan publish-olja a képet, erre csatlakozik az `open_manipulator/open_manipulator_controller/scripts/color_recognition.py` subscribere.
 Az implementált color recognition open_cv használatával két, előre beállított RGB értéket keres a képen. Az ismert RGB értékek alapján `binary treshold` algoritmussal mindhárom színcsatornára elkészíti a maszkot, majd ezek metszetéből meghatározza a tényleges bináris képet.
@@ -146,13 +150,15 @@ Abban az esetben, ha valaki nyer, vagy elfogynak az asztal mellől a bábuk, a s
 A bábuk felvétele és lerakása egy mozgássorozat következménye. A mozgássorozat lépéseinek egymás utáni lefutását egy állapotautomata szabályozza. Erre a rospy node folyamatos zavartalan futása miatt is szükség van, nem szeretnénk, hogy a node hosszabb ideig leálljon, amíg várakozik. Az állapotautomata leegyszerűsített felépítése látható az alábbi ábrán:
 
 #### Move függvény
-#### tic_tac_toe
-### Bugok
+### A szimuláció és a valós robotirányítás közti eltérések és azok magyarázata
+### Ismert bugok
 - rostopic pub /option std_msgs/String "print_open_manipulator_setting" -> nem írja ki az infókat a controlleres terminálablakba
 - teleop_keyboard néha random lefagy -> indítsd újra a controllert és a teleop_keyboardot is!
 - gazeboban a robot megfogója open állapotban ugrál, closed állapotban nem
 - gravity compensationhöz Dynamixel Wizardban kéne beállítani valamit, amit nem tudtam telepíteni (nekünk nem is feltétlen kell)
-# To do
+## To do
 - [ ] kép a színfelismerésről
 - [ ] bugok szekció átdolgozása/kitörlése
 - [ ] kép a pályáról
+## Fejlesztési lehetőségek
+- [ ] A módosított scriptek kiszervezése különálló package-be
