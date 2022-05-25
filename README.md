@@ -58,7 +58,7 @@ git clone https://github.com/MOGI-ROS/open_manipulator_ikfast_plugin
 ### Rövid összefoglalás
 A projektünk során Robotis OpenMANIPULATOR-X robottal valósítottunk meg egy színfeismeréssel működő amőbaprogramot, aminek során a robot lejátszik magával egy amőbajátszmát, és minden lépés előtt megnézi és feldolgozza a jelenlegi állást. Azért nem a korábbi lépések elmentését használtuk a következő lépés eldöntéséhez, mert így a projekt átalakítható később olyanra, amelyben a robot ember ellen játszik.
 A játék pályája 3x3-as, a robot emellől veszi fel a bábukat, 4 kéket és 4 pirosat. A projekt 3 fő részből áll, a következőkben ezeket vesszük végig.
-### Szükséges repositoryk
+### További szükséges package-ek
 A fentebb felsorolt repositorykon kívül három további került telepítésre.
 ```
 git clone https://github.com/MOGI-ROS/open_manipulator_tools.git
@@ -70,7 +70,7 @@ git clone https://github.com/MOGI-ROS/gazebo_ros_link_attacher.git
 git clone https://github.com/MOGI-ROS/open_manipulator_ikfast_plugin
 ```
 
-Összesen három csomagban végeztünk módosításokat a projekt kivitelezéséhez. Ezeket forkoltuk, és létrehoztunk új brancheket a projektünknek. Az amőbázó robot projekt futtatásához ezek szükségesek.
+Összesen három csomagban végeztünk módosításokat a projekt kivitelezéséhez. Ezeket forkoltuk, és létrehoztunk új brancheket a projektünknek. Az amőbázó robot futtatásához ezek szükségesek.
 Az általunk létrehozott branchek telepítési utasításai:
 ```
 git clone -b noetic-devel-mod https://github.com/brobti/open_manipulator.git
