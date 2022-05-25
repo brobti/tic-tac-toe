@@ -128,7 +128,7 @@ Valós kamerával:
 [PC terminal #2] $ rosrun open_manipulator_controller color_recognition.py
 ```
 
-<img src="/images/valos_kamera.PNG" alt="drawing" width="600"/>
+![alt text](/images/valos_kamera.PNG?raw=true)
 
 ### Inverz kinematika
 Az inverz kinematika tényleges implementációja már a https://github.com/MOGI-ROS/open_manipulator_tools repositoryban megtörtént. Ebből készítettük a https://github.com/brobti/open_manipulator_tools forkot, majd ennek a ticTacToe branch-ét. Ezen a branchen került implementálásra az `open_manipulator_tools/inverse_kinematics.py`, a robot és az amőbázó script közötti kommunikációt megvalósító `action server`.
@@ -157,7 +157,14 @@ Egy teljes lépés több 3 fő részből áll: Először a robot a felvétel hel
 ![alt text](/images/move.png?raw=true)
 
 ### A szimuláció és a valós robotirányítás közti eltérések és azok magyarázata
-
+open_manipulator/open_manipulator_controler/scripts/ticTacToe.py
+- A gripper kinyitása és becsukása különböző range-ben állítható a szimulációban és a valóságban
+- A gripperhez a valóságban nem kell `attach` és `detach` parancs a működéshez, ez csak a modellezés miatt szükséges.
+- A valóságban a gripper helyes alapállapotba állításához szükség van egy becsukás-kinyitás sorozatra.
+open_manipulator/open_manipulator_controler/scripts/colorRecognition.py
+- A valóságban a bábuk más színűek, ezek RGB értékei külön vannak kódolva a két esetre
+open_manipulator_tools/scripts/inverse_kinematics.py
+- A szimulációban a `/joint_states` topicon tudjuk figyelni a jointok helyzetét, viszont a valós működéskor ezen a topicon nem érkezik adat. A működést utóbbi esetben nem tudjuk biztosítani a visszajelzés ismeretében, ezért a parancs kiadása után egy ideig várunk, majd bízva abban, hogy a robot elért a megfelelő pozícióba, továbbhaladunk a következő utasításra.
 ## Releváns módosított fájlok teljes listája:
 - open_manipulator `branch: noetic-devel-mod`
   - open_manipulator_controller
