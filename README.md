@@ -2,78 +2,86 @@
 
 ## Migrálás, setup
 
-A tanszéki nagy gépre telepítésre került az Ubuntu 20.04.3 és a ROS Noetic (1.15.13) disztribúciója.
-A felhasznált csomagok telepítési utasításai:
-- sudo apt install ros-noetic-ros-controllers 
-- sudo apt install ros-noetic-gazebo 
-- sudo apt install ros-noetic-moveit 
-- sudo apt install ros-noetic-industrial-core
-- sudo apt install ros-noetic-dynamixel-sdk 
-- sudo apt install ros-noetic-dynamixel-workbench
-- sudo apt install ros-noetic-robotis-manipulator
-- git clone -b noetic-devel-mod https://github.com/brobti/open_manipulator.git
-- git clone -b noetic-devel https://github.com/ROBOTIS-GIT/open_manipulator_msgs.git
-- git clone -b noetic-devel https://github.com/ROBOTIS-GIT/open_manipulator_simulations.git
-- git clone https://github.com/ROBOTIS-GIT/open_manipulator_dependencies.git
-- sudo apt install ros-noetic-joint-state-publisher-gui
-- git clone -b telemanipulator https://github.com/brobti/open_manipulator_controls.git
-- git clone -b ticTacToe https://github.com/brobti/open_manipulator_tools.git
-- git clone https://github.com/MOGI-ROS/gazebo_ros_link_attacher.git
-- git clone https://github.com/MOGI-ROS/open_manipulator_ikfast_plugin
+A BME-MOGI Mesterséges Intelligencia és Kognitív Robotika Laboratóriumában található Ubuntu 20.04.3 operációs rendszert futtató desktop gépre telepítésre került a ROS Noetic (1.15.13) disztribúciója a Telemanipulátor projekt migrálása céljából. A ROBOTIS hivatalos honlapja alapján telepítettük az OpenManipulatort.  https://emanual.robotis.com/docs/en/platform/openmanipulator_x/overview/
 
-### A robot fizikai irányításának parancsai
-
-Billentyűzettel:
+A felhasznált, eredeti csomagok telepítési utasításai:
 ```
-[PC terminal #1] $ roscore
-[PC terminal #2] $ roslaunch open_manipulator_controller open_manipulator_controller.launch
-[PC terminal #3] $ roslaunch open_manipulator_description open_manipulator_rviz.launch
-[PC terminal #4] $ roslaunch open_manipulator_teleop open_manipulator_teleop_keyboard.launch
+sudo apt install ros-noetic-ros-controllers 
 ```
-GUI-val:
 ```
-[PC terminal #1] $ roscore
-[PC terminal #2] $ roslaunch open_manipulator_controller open_manipulator_controller.launch
-[PC terminal #3] $ roslaunch open_manipulator_description open_manipulator_rviz.launch
-[PC terminal #4] $ roslaunch open_manipulator_control_gui open_manipulator_control_gui.launch
+sudo apt install ros-noetic-gazebo 
 ```
-RVizben: Timer Start -> adatok bevitele -> Send
-
-### Robot szimulációs irányításának parancsai
-
-Billentyűzettel:
 ```
-[PC terminal #1] $ roscore
-[PC terminal #2] $ roslaunch open_manipulator_controller open_manipulator_controller.launch use_platform:=false
-[PC terminal #3] $ roslaunch open_manipulator_gazebo open_manipulator_gazebo.launch 
-[PC terminal #4] $ roslaunch open_manipulator_teleop open_manipulator_teleop_keyboard.launch
+sudo apt install ros-noetic-moveit 
 ```
-Gazebóban alul a play gombra kell kattintani, hogy elinduljon a szimuláció.
-
-GUI-val:
 ```
-[PC terminal #1] $ roscore
-[PC terminal #2] $ roslaunch open_manipulator_controller open_manipulator_controller.launch use_platform:=false
-[PC terminal #3] $ roslaunch open_manipulator_gazebo open_manipulator_gazebo.launch
-[PC terminal #4] $ roslaunch open_manipulator_control_gui open_manipulator_control_gui.launch
+sudo apt install ros-noetic-industrial-core
 ```
-MoveIt!-tal:
 ```
-[PC terminal #1] $ roscore
-[PC terminal #2] $ roslaunch open_manipulator_controller open_manipulator_controller.launch use_platform:=false
-[PC terminal #3] $ roslaunch open_manipulator_controllers joint_trajectory_controller.launch 
+sudo apt install ros-noetic-dynamixel-sdk 
+```
+```
+sudo apt install ros-noetic-dynamixel-workbench
+```
+```
+sudo apt install ros-noetic-joint-state-publisher-gui
+```
+```
+sudo apt install ros-noetic-robotis-manipulator
+```
+```
+git clone -b noetic-devel https://github.com/ROBOTIS-GIT/open_manipulator.git
+```
+```
+git clone -b noetic-devel https://github.com/ROBOTIS-GIT/open_manipulator_msgs.git
+```
+```
+git clone -b noetic-devel https://github.com/ROBOTIS-GIT/open_manipulator_simulations.git
+```
+```
+git clone https://github.com/ROBOTIS-GIT/open_manipulator_dependencies.git
+```
+```
+git clone telemanipulator https://github.com/ROBOTIS-GIT/open_manipulator_controls.git
+```
+```
+git clone https://github.com/MOGI-ROS/open_manipulator_tools.git
+```
+```
+git clone https://github.com/MOGI-ROS/gazebo_ros_link_attacher.git
+```
+```
+git clone https://github.com/MOGI-ROS/open_manipulator_ikfast_plugin
 ```
 
 ## Amőbázó robot
 ### Rövid összefoglalás
 A projektünk során Robotis OpenMANIPULATOR-X robottal valósítottunk meg egy színfeismeréssel működő amőbaprogramot, aminek során a robot lejátszik magával egy amőbajátszmát, és minden lépés előtt megnézi és feldolgozza a jelenlegi állást. Azért nem a korábbi lépések elmentését használtuk a következő lépés eldöntéséhez, mert így a projekt átalakítható később olyanra, amelyben a robot ember ellen játszik.
 A játék pályája 3x3-as, a robot emellől veszi fel a bábukat, 4 kéket és 4 pirosat. A projekt 3 fő részből áll, a következőkben ezeket vesszük végig.
-### Forkolt repositoryk
-- https://github.com/brobti/open_manipulator/tree/noetic-devel-mod
-- https://github.com/brobti/open_manipulator_controls/tree/telemanipulator
-- https://github.com/brobti/open_manipulator_tools
+### Szükséges repositoryk
+A fentebb felsorolt repositorykon kívül három további került telepítésre.
+```
+git clone https://github.com/MOGI-ROS/open_manipulator_tools.git
+```
+```
+git clone https://github.com/MOGI-ROS/gazebo_ros_link_attacher.git
+```
+```
+git clone https://github.com/MOGI-ROS/open_manipulator_ikfast_plugin
+```
 
-A csomagok telepítési utasításai a dokumentum elején láthatók.
+Az eddig felsoroltak közül hármon végeztünk módosításokat a projekt kivitelezéséhez. Ezeket forkoltuk, és létrehoztunk új brancheket a projektünknek.
+Az általunk létrehozott branchek telepítési utasításai:
+```
+git clone -b noetic-devel-mod https://github.com/brobti/open_manipulator.git
+```
+```
+git clone -b telemanipulator https://github.com/brobti/open_manipulator_controls.git
+```
+```
+git clone -b ticTacToe https://github.com/brobti/open_manipulator_tools.git
+```
+
 ### Futtatás
 #### Szimuláció
 ```
