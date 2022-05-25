@@ -25,70 +25,42 @@ Telepített package-ek:
 
 Billentyűzettel:
 ```
-roscore
-```
-```
-roslaunch open_manipulator_controller open_manipulator_controller.launch
-```
-```
-roslaunch open_manipulator_description open_manipulator_rviz.launch
-```
-```
-roslaunch open_manipulator_teleop open_manipulator_teleop_keyboard.launch
+[PC terminal #1] $ roscore
+[PC terminal #2] $ roslaunch open_manipulator_controller open_manipulator_controller.launch
+[PC terminal #3] $ roslaunch open_manipulator_description open_manipulator_rviz.launch
+[PC terminal #4] $ roslaunch open_manipulator_teleop open_manipulator_teleop_keyboard.launch
 ```
 GUI-val:
 ```
-roscore
-```
-```
-roslaunch open_manipulator_controller open_manipulator_controller.launch
-```
-```
-roslaunch open_manipulator_description open_manipulator_rviz.launch
-```
-```
-roslaunch open_manipulator_control_gui open_manipulator_control_gui.launch
+[PC terminal #1] $ roscore
+[PC terminal #2] $ roslaunch open_manipulator_controller open_manipulator_controller.launch
+[PC terminal #3] $ roslaunch open_manipulator_description open_manipulator_rviz.launch
+[PC terminal #4] $ roslaunch open_manipulator_control_gui open_manipulator_control_gui.launch
 ```
 RVizben: Timer Start -> adatok bevitele -> Send
 ### Robot szimulációs irányításának parancsai
 
 Billentyűzettel:
 ```
-roscore
-```
-```
-roslaunch open_manipulator_controller open_manipulator_controller.launch use_platform:=false
-```
-```
-roslaunch open_manipulator_gazebo open_manipulator_gazebo.launch 
-```
-```
-roslaunch open_manipulator_teleop open_manipulator_teleop_keyboard.launch
+[PC terminal #1] $ roscore
+[PC terminal #2] $ roslaunch open_manipulator_controller open_manipulator_controller.launch use_platform:=false
+[PC terminal #3] $ roslaunch open_manipulator_gazebo open_manipulator_gazebo.launch 
+[PC terminal #4] $ roslaunch open_manipulator_teleop open_manipulator_teleop_keyboard.launch
 ```
 Gazebóban alul a play gombra kell kattintani, hogy elinduljon a szimuláció.
 
 GUI-val:
 ```
-roscore
-```
-```
-roslaunch open_manipulator_controller open_manipulator_controller.launch use_platform:=false
-```
-```
-roslaunch open_manipulator_gazebo open_manipulator_gazebo.launch
-```
-```
-roslaunch open_manipulator_control_gui open_manipulator_control_gui.launch
+[PC terminal #1] $ roscore
+[PC terminal #2] $ roslaunch open_manipulator_controller open_manipulator_controller.launch use_platform:=false
+[PC terminal #3] $ roslaunch open_manipulator_gazebo open_manipulator_gazebo.launch
+[PC terminal #4] $ roslaunch open_manipulator_control_gui open_manipulator_control_gui.launch
 ```
 MoveIt!-tal:
 ```
-roscore
-```
-```
-roslaunch open_manipulator_controller open_manipulator_controller.launch use_platform:=false
-```
-```
-roslaunch open_manipulator_controllers joint_trajectory_controller.launch 
+[PC terminal #1] $ roscore
+[PC terminal #2] $ roslaunch open_manipulator_controller open_manipulator_controller.launch use_platform:=false
+[PC terminal #3] $ roslaunch open_manipulator_controllers joint_trajectory_controller.launch 
 ```
 Valós kamera elindítása:
 Feltéve, hogy a felhasznált Rasberry Pi kapcsolódik a wifi hálózatra, csatlakozzunk rá, ez lesz a `[PI terminal]`:
@@ -98,8 +70,8 @@ IP: 10.0.0.11
 Jelszó: turtlebot
 
 ```
-[PI terminal] ssh ubuntu@10.0.0.11
-[PI terminal] rosrun mecanum_anomaly_det StreamCam.py
+[PI terminal] $ ssh ubuntu@10.0.0.11
+[PI terminal] $ rosrun mecanum_anomaly_det StreamCam.py
 ```
 ## Amőbázó robot
 ### Rövid összefoglalás
@@ -110,7 +82,30 @@ Kezdetben egy GitLab repositoryban próbáltunk meg dolgozni, de oda nem tudtuk 
 A package-ek a dokumentum elején láthatók.
 ### Futtatás
 #### Szimuláció
+```
+[PC terminal #1] $ roscore
+[PC terminal #2] $ roslaunch open_manipulator_controllers joint_trajectory_controller.launch
+[PC terminal #3] $ rosrun open_manipulator_controller colorRecognition.py sim
+[PC terminal #4] $ rosrun open_manipulator_tools inverse_kinematics.py sim
+[PC terminal #5] $ rosrun open_manipulator_controller ticTacToe.py sim
+```
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/HVNNPpgNrNY/0.jpg)](https://www.youtube.com/watch?v=HVNNPpgNrNY)
+
 #### Valós robot futtatása
+Kamerához való csatlakozás: Lásd fentebb.
+```
+[PC terminal #1] $ roscore
+[PI terminal   ] $ raspi: rosrun mecanum_anomaly_det StreamCam.py
+[PC terminal #2] $ roslaunch open_manipulator_controllers joint_trajectory_controller.launch sim:=false
+[PC terminal #3] $ rosrun open_manipulator_controller colorRecognition.py
+[PC terminal #4] $ rosrun open_manipulator_tools inverse_kinematics.py
+[PC terminal #5] $ rosrun open_manipulator_controller ticTacToe.py
+```
+
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/ySCi5xbLK7A/0.jpg)](https://www.youtube.com/watch?v=ySCi5xbLK7A)
+
 ### Színfelismerés
 A színfelismeréshez kiinduló projektnek a https://github.com/MOGI-ROS/Week-5-6-Gazebo-sensors 5. pontjában használt kódból indultunk ki. A szimulált és a valós kamera a `head_camera/image_raw` Ros topic-on keresztül folyamatosan publish-olja a képet, erre csatlakozik az `open_manipulator/open_manipulator_controller/scripts/color_recognition.py` subscribere.
 Az implementált color recognition open_cv használatával két, előre beállított RGB értéket keres a képen. Az ismert RGB értékek alapján `binary treshold` algoritmussal mindhárom színcsatornára elkészíti a maszkot, majd ezek metszetéből meghatározza a tényleges bináris képet.
@@ -119,17 +114,18 @@ A megharározott középpontokat az egyszerűség kedvéért egy String-be össz
 #### A színfelismerés elindítása:
 Szimulációval:
 ```
-[PC terminal 1] roscore
-[PC terminal 2] roslaunch open_manipulator_controller open_manipulator_controller.launch
-[PC terminal 3] rosrun open_manipulator_controller color_recognition.py
+[PC terminal #1] $ roscore
+[PC terminal #2] $ roslaunch open_manipulator_controller open_manipulator_controller.launch
+[PC terminal #3] $ rosrun open_manipulator_controller color_recognition.py
 ```
 
 ![alt text](/images/color_recognition_simulation.png?raw=true)
+
 Valós kamerával:
 ```
-[PC terminal 1] roscore
-[PI terminal] rosrun mecanum_anomaly_det StreamCam.py
-[PC terminal 2] rosrun open_manipulator_controller color_recognition.py
+[PC terminal #1] $ roscore
+[PI terminal   ] $ rosrun mecanum_anomaly_det StreamCam.py
+[PC terminal #2] $ rosrun open_manipulator_controller color_recognition.py
 ```
 ### Inverz kinematika
 Az inverz kinematika tényleges implementációja már a https://github.com/MOGI-ROS/open_manipulator_tools repositoryban megtörtént. Ebből készítettük a https://github.com/brobti/open_manipulator_tools forkot, majd ennek a ticTacToe branch-ét. Ezen a branchen került implementálásra az `open_manipulator_tools/inverse_kinematics.py`, a robot és az amőbázó script közötti kommunikációt megvalósító `action server`.
@@ -151,10 +147,12 @@ Abban az esetben, ha valaki nyer, vagy elfogynak az asztal mellől a bábuk, a s
 A bábuk felvétele és lerakása egy mozgássorozat következménye. A mozgássorozat lépéseinek egymás utáni lefutását egy állapotautomata szabályozza. Erre a rospy node folyamatos zavartalan futása miatt is szükség van, nem szeretnénk, hogy a node hosszabb ideig leálljon, amíg várakozik. Az állapotautomata leegyszerűsített felépítése látható az alábbi ábrán:
 
 ![alt text](/images/pick-place.png?raw=true)
+
 #### Move függvény
 Egy teljes lépés több 3 fő részből áll: Először a robot a felvétel helyére mozog, és felveszi a megfelelő bábut. Ezután a megfelelő pozícióra mozog a tábla fölé, majd lehelyezi a bábut. Az utolsó lépés a kiindulási pozícióba való visszatérés. A folyamat az alábbi ábrán követhető:
 
 ![alt text](/images/move.png?raw=true)
+
 ### A szimuláció és a valós robotirányítás közti eltérések és azok magyarázata
 
 ## Releváns módosított fájlok teljes listája:
