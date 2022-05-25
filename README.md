@@ -128,6 +128,8 @@ Valós kamerával:
 [PC terminal #2] $ rosrun open_manipulator_controller color_recognition.py
 ```
 
+<img src="/images/valos_kamera.PNG" alt="drawing" width="200"/>
+
 ![alt text](/images/valos_kamera.PNG?raw=true)
 
 ### Inverz kinematika
