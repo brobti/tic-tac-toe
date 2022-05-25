@@ -79,6 +79,7 @@ A package-ek a dokumentum elején láthatók.
 [PC terminal #4] $ rosrun open_manipulator_tools inverse_kinematics.py sim
 [PC terminal #5] $ rosrun open_manipulator_controller ticTacToe.py sim
 ```
+Videó a szimulációról:
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/HVNNPpgNrNY/0.jpg)](https://www.youtube.com/watch?v=HVNNPpgNrNY)
 
@@ -103,6 +104,7 @@ A robot:
 [PC terminal #5] $ rosrun open_manipulator_controller ticTacToe.py
 ```
 
+Videó a valós futásról:
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/ySCi5xbLK7A/0.jpg)](https://www.youtube.com/watch?v=ySCi5xbLK7A)
 
