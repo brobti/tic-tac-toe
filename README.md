@@ -127,6 +127,9 @@ Valós kamerával:
 [PI terminal   ] $ rosrun mecanum_anomaly_det StreamCam.py
 [PC terminal #2] $ rosrun open_manipulator_controller color_recognition.py
 ```
+
+![alt text](/images/valos_kamera.PNG?raw=true)
+
 ### Inverz kinematika
 Az inverz kinematika tényleges implementációja már a https://github.com/MOGI-ROS/open_manipulator_tools repositoryban megtörtént. Ebből készítettük a https://github.com/brobti/open_manipulator_tools forkot, majd ennek a ticTacToe branch-ét. Ezen a branchen került implementálásra az `open_manipulator_tools/inverse_kinematics.py`, a robot és az amőbázó script közötti kommunikációt megvalósító `action server`.
 #### Action Server működése
