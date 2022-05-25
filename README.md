@@ -163,7 +163,8 @@ open_manipulator/open_manipulator_controler/scripts/ticTacToe.py
 - A valóságban a gripper helyes alapállapotba állításához szükség van egy becsukás-kinyitás sorozatra.
 
 open_manipulator/open_manipulator_controler/scripts/colorRecognition.py
-- A valóságban a bábuk más színűek, ezek RGB értékei külön vannak kódolva a két esetre
+- A valóságban a bábuk más színűek, és a megvilágítás függvényében a valós színüket is másnak látja a kamera, ezért a bábuk színének RGB értékei külön vannak kódolva a két esetre.
+- A valós kamera más pozícióból néz rá a táblára, közelebbről látja azt. Emiatt állítottunk a rátekintési magasságon, így hasonló képet lát a két esetben.
 
 open_manipulator_tools/scripts/inverse_kinematics.py
 - A szimulációban a `/joint_states` topicon tudjuk figyelni a jointok helyzetét, viszont a valós működéskor ezen a topicon nem érkezik adat. A működést utóbbi esetben nem tudjuk biztosítani a visszajelzés ismeretében, ezért a parancs kiadása után egy ideig várunk, majd bízva abban, hogy a robot elért a megfelelő pozícióba, továbbhaladunk a következő utasításra.
