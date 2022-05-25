@@ -141,10 +141,10 @@ Az általunk definiált `kinematicsAction` message a következőképpen épül f
 Az action server az `/arm_controller/command` nodera publisholja az inverz kinematikával számolt joint szögeket, majd a `/joint_states` node-ra feliratkozik, és innen a joint szögeket kinyeri. A script folyamatosan fut, amíg a kiküldött és az érkező joint szögek különbsége egy delta érték alá nem esik, ekkor leáll és a `result` értéket `True`-ra állítja. Emellett a folyamat során a `time_elapsed` számlálót folyamatosan inkrementálja egy maximális értékig. Amennyiben a számláló eléri ezt az értéket, a folyamat timeouttal leáll, és `False` lesz a `result` értéke.
 ### A main function
 #### A pálya feldolgozása
-A `/color_recognition` topicra feliratkozva kérjük le a táblán látható bábuk képkoordinátáit és színeit, mikor egy megadott rátekintési pozícióból figyel a robot. Ezekre a koordinátákra megnézzük sor és oszlop szerint, hogy az előre meghatározott keresési intervallumon belül vannak-e, és ezek alapján töltünk fel egy 9 elemű vektort, ami a jelenlegi játszma állását tartalmazza. Minden lépés előtt megnézzük az állást, és ez alapján választunk pozíciót (a következő alfejezetben részletezett módon), ahova le szeretnénk tenni a bábut. Ez a módszer azért jobb, mint ha elmentenénk a korábbi lépéseinket, mert át lehet alakítani olyan formára, ahol a robot emberrel játszik.
+A `/color_recognition` topicról a `rospy.wait_for_message('/color_recognition', String, 5)` paranccsal kérjük le a táblán látható bábuk képkoordinátáit és színeit, mikor egy megadott rátekintési pozícióból figyel a robot. Ezekre a koordinátákra megnézzük sor és oszlop szerint, hogy az előre meghatározott keresési intervallumon belül vannak-e, és ezek alapján töltünk fel egy 9 elemű vektort, ami a jelenlegi játszma állását tartalmazza. Minden lépés előtt megnézzük az állást, és ez alapján választunk pozíciót (a következő alfejezetben részletezett módon), ahova le szeretnénk tenni a bábut. Ez a módszer azért jobb, mint ha elmentenénk a korábbi lépéseinket, mert át lehet alakítani olyan formára, ahol a robot emberrel játszik.
 #### Amőba algoritmus
-Az amőba algoritmushoz használt kiindulási alap: https://www.techwithtim.net/tutorials/python-programming/tic-tac-toe-tutorial/
-Az algoritmus kap egy páylát és játékost (piros v. kék) bemenetként, és választ hozzá lépést. Első lépésként elmenti az üres pozíciók indexeit. Amennyiben a pálya üres, véletlenszerűen választ. Ha már vannak fent bábuk, megnézi, meg tudja-e nyerni az adott játékos egy lépéssel a játszmát, vagy meg tudja-e akadályozni azt, hogy az ellenfél nyerjen. Mikor ilyen helyzetek nincsenek, először a pálya közepére próbál rakni, ha az foglalt, akkor véletlenszerűen választ magának egy üres sarkot, ha pedig ilyen nincsen, az egyik oldalra rak.
+Az amőba algoritmushoz használt kiindulási alap: https://www.techwithtim.net/tutorials/python-programming/tic-tac-toe-tutorial/.
+Az algoritmus kap egy pályát és játékost (piros v. kék) bemenetként, és választ hozzá lépést. Első lépésként elmenti az üres pozíciók indexeit. Amennyiben a pálya üres, véletlenszerűen választ. Ha már vannak fent bábuk, megnézi, meg tudja-e nyerni az adott játékos egy lépéssel a játszmát, vagy meg tudja-e akadályozni azt, hogy az ellenfél nyerjen. Mikor ilyen helyzetek nincsenek, először a pálya közepére próbál rakni, ha az foglalt, akkor véletlenszerűen választ magának egy üres sarkot, ha pedig ilyen nincsen, az egyik oldalra rak.
 Abban az esetben, ha valaki nyer, vagy elfogynak az asztal mellől a bábuk, a szimuláció vagy a fizikai robot megáll.
 #### Pick and place állapotautomata
 A bábuk felvétele és lerakása egy mozgássorozat következménye. A mozgássorozat lépéseinek egymás utáni lefutását egy állapotautomata szabályozza. Erre a rospy node folyamatos zavartalan futása miatt is szükség van, nem szeretnénk, hogy a node hosszabb ideig leálljon, amíg várakozik. Az állapotautomata leegyszerűsített felépítése látható az alábbi ábrán:
@@ -157,7 +157,7 @@ Egy teljes lépés több 3 fő részből áll: Először a robot a felvétel hel
 ### A szimuláció és a valós robotirányítás közti eltérések és azok magyarázata
 
 ## Releváns módosított fájlok teljes listája:
-- open_manipulator, branch: noetic-devel-mod
+- open_manipulator `branch: noetic-devel-mod`
   - open_manipulator_controller
     - scripts
       - colorRecognition.py
@@ -178,7 +178,7 @@ Egy teljes lépés több 3 fő részből áll: Először a robot a felvétel hel
     - urdf
       - open_manipulator.gazebo.xacro
       - open_manipulator.urdf.xacro 
-- open_manipulator_controls, branch: telemanipulator
+- open_manipulator_controls `branch: telemanipulator`
   - open_manipulator_controllers
     - launch
       - joint_trajectory_controller.launch
@@ -192,7 +192,7 @@ Egy teljes lépés több 3 fő részből áll: Először a robot a felvétel hel
       - kinematics.yaml
     - launch
       - moveit.rviz 
-- open_manipulator_tools, branch: ticTacToe
+- open_manipulator_tools `branch: ticTacToe`
   - action
     - kinematicsAction.action
   - scripts
@@ -216,6 +216,8 @@ Egy teljes lépés több 3 fő részből áll: Először a robot a felvétel hel
 ## To do
 - [ ] kép a színfelismerésről
 - [ ] bugok szekció átdolgozása/kitörlése
-- [ ] kép a pályáról
 ## Fejlesztési lehetőségek
 - [ ] A módosított scriptek kiszervezése különálló package-be
+- [ ] Ember-Robot játék megvalósítása
+- [ ] Színfelismerés javítása, hogy bármilyen pozícióban meg tudja határozni, hogy a látóterében lévő tárgy milyen koordinátán van.
+- [ ] Robot mozgásának folyamatosabbá tétele egy jobb, pályakövető szabályozással
