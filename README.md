@@ -161,8 +161,10 @@ open_manipulator/open_manipulator_controler/scripts/ticTacToe.py
 - A gripper kinyitása és becsukása különböző range-ben állítható a szimulációban és a valóságban
 - A gripperhez a valóságban nem kell `attach` és `detach` parancs a működéshez, ez csak a modellezés miatt szükséges.
 - A valóságban a gripper helyes alapállapotba állításához szükség van egy becsukás-kinyitás sorozatra.
+
 open_manipulator/open_manipulator_controler/scripts/colorRecognition.py
 - A valóságban a bábuk más színűek, ezek RGB értékei külön vannak kódolva a két esetre
+
 open_manipulator_tools/scripts/inverse_kinematics.py
 - A szimulációban a `/joint_states` topicon tudjuk figyelni a jointok helyzetét, viszont a valós működéskor ezen a topicon nem érkezik adat. A működést utóbbi esetben nem tudjuk biztosítani a visszajelzés ismeretében, ezért a parancs kiadása után egy ideig várunk, majd bízva abban, hogy a robot elért a megfelelő pozícióba, továbbhaladunk a következő utasításra.
 ## Releváns módosított fájlok teljes listája:
