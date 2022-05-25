@@ -2,20 +2,20 @@
 
 ## Migrálás, setup
 
-A tanszéki nagy gépre telepítésre került az Ubuntu 20.04.3 és a ROS Noetic (1.15.13) distroja.
-Telepített package-ek:
-- ros-noetic-ros-controllers 
-- ros-noetic-gazebo 
-- ros-noetic-moveit 
-- ros-noetic-industrial-core
-- ros-noetic-dynamixel-sdk 
-- ros-noetic-dynamixel-workbench
-- ros-noetic-robotis-manipulator
+A tanszéki nagy gépre telepítésre került az Ubuntu 20.04.3 és a ROS Noetic (1.15.13) disztribúciója.
+A felhasznált csomagok telepítési utasításai:
+- sudo apt install ros-noetic-ros-controllers 
+- sudo apt install ros-noetic-gazebo 
+- sudo apt install ros-noetic-moveit 
+- sudo apt install ros-noetic-industrial-core
+- sudo apt install ros-noetic-dynamixel-sdk 
+- sudo apt install ros-noetic-dynamixel-workbench
+- sudo apt install ros-noetic-robotis-manipulator
 - git clone -b noetic-devel-mod https://github.com/brobti/open_manipulator.git
 - git clone -b noetic-devel https://github.com/ROBOTIS-GIT/open_manipulator_msgs.git
 - git clone -b noetic-devel https://github.com/ROBOTIS-GIT/open_manipulator_simulations.git
 - git clone https://github.com/ROBOTIS-GIT/open_manipulator_dependencies.git
-- ros-noetic-joint-state-publisher-gui
+- sudo apt install ros-noetic-joint-state-publisher-gui
 - git clone -b telemanipulator https://github.com/brobti/open_manipulator_controls.git
 - git clone -b ticTacToe https://github.com/brobti/open_manipulator_tools.git
 - git clone https://github.com/MOGI-ROS/gazebo_ros_link_attacher.git
@@ -190,8 +190,6 @@ open_manipulator_tools/scripts/inverse_kinematics.py
       - kinematicsMessage.srv
   - open_manipulator_description
     - meshes
-      - hengeresBabuKek/
-      - hengeresBabuPiros/
       - hengeres_babu_kek.dae 
       - hengeres_babu_piros.dae
       - tartos_kamera3.dae 
