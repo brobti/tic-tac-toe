@@ -94,14 +94,14 @@ Jelszó: turtlebot
 [PI terminal] $ ssh ubuntu@10.0.0.11
 [PI terminal] $ rosrun mecanum_anomaly_det StreamCam.py
 ```
-
+A robot:
 ```
 [PC terminal #1] $ roscore
-[PI terminal   ] $ raspi: rosrun mecanum_anomaly_det StreamCam.py
-[PC terminal #2] $ roslaunch open_manipulator_controllers joint_trajectory_controller.launch sim:=false
-[PC terminal #3] $ rosrun open_manipulator_controller colorRecognition.py
-[PC terminal #4] $ rosrun open_manipulator_tools inverse_kinematics.py
-[PC terminal #5] $ rosrun open_manipulator_controller ticTacToe.py
+[PI terminal #2] $ rosrun mecanum_anomaly_det StreamCam.py
+[PC terminal #3] $ roslaunch open_manipulator_controllers joint_trajectory_controller.launch sim:=false
+[PC terminal #4] $ rosrun open_manipulator_controller colorRecognition.py
+[PC terminal #5] $ rosrun open_manipulator_tools inverse_kinematics.py
+[PC terminal #6] $ rosrun open_manipulator_controller ticTacToe.py
 ```
 
 
