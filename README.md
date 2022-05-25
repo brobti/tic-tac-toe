@@ -151,7 +151,7 @@ A bábuk felvétele és lerakása egy mozgássorozat következménye. A mozgáss
 
 ![alt text](/images/pick-place.png?raw=true)
 #### Move függvény
-
+Egy teljes lépés több 3 fő részből áll: Először a robot a felvétel helyére mozog, és felveszi a megfelelő bábut. Ezután a megfelelő pozícióra mozog a tábla fölé, majd lehelyezi a bábut. Az utolsó lépés a kiindulási pozícióba való visszatérés. A folyamat az alábbi ábrán követhető:
 ![alt text](/images/move.png?raw=true)
 ### A szimuláció és a valós robotirányítás közti eltérések és azok magyarázata
 ### Ismert bugok
