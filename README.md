@@ -124,6 +124,7 @@ Szimulációval:
 [PC terminal 3] rosrun open_manipulator_controller color_recognition.py
 ```
 
+![alt text](/images/color_recognition_simulation.png?raw=true)
 Valós kamerával:
 ```
 [PC terminal 1] roscore
