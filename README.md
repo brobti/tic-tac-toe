@@ -2,16 +2,20 @@
 
 A projekt a BME-MOGI Kognitív robotika és Robotrendszerek laboratórium tantárgyak projektfeladataként valósult meg.
 
-Fejlesztők:
+**Fejlesztők:**
 
 Bartalos Róbert
+
 Dobó Viktor
+
 Galovics Bálint
+
 Szabó Bendegúz
 
-Oktatók:
+**Oktatók:**
 
 Dudás Dávid
+
 Nagy Balázs
 
 
