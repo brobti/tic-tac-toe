@@ -62,17 +62,7 @@ MoveIt!-tal:
 [PC terminal #2] $ roslaunch open_manipulator_controller open_manipulator_controller.launch use_platform:=false
 [PC terminal #3] $ roslaunch open_manipulator_controllers joint_trajectory_controller.launch 
 ```
-Valós kamera elindítása:
-Feltéve, hogy a felhasznált Rasberry Pi kapcsolódik a wifi hálózatra, csatlakozzunk rá, ez lesz a `[PI terminal]`:
 
-IP: 10.0.0.11
-
-Jelszó: turtlebot
-
-```
-[PI terminal] $ ssh ubuntu@10.0.0.11
-[PI terminal] $ rosrun mecanum_anomaly_det StreamCam.py
-```
 ## Amőbázó robot
 ### Rövid összefoglalás
 A projektünk során Robotis OpenMANIPULATOR-X robottal valósítottunk meg egy színfeismeréssel működő amőbaprogramot, aminek során a robot lejátszik magával egy amőba játszmát, és minden lépés előtt megnézi és feldolgozza a jelenlegi állást. Azért nem a korábbi lépések elmentését használtuk a következő lépés eldöntéséhez, mert így a projekt átalakítható később olyanra, ahol a robot ember ellen játszik.
@@ -93,7 +83,18 @@ A package-ek a dokumentum elején láthatók.
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/HVNNPpgNrNY/0.jpg)](https://www.youtube.com/watch?v=HVNNPpgNrNY)
 
 #### Valós robot futtatása
-Kamerához való csatlakozás: Lásd fentebb.
+Valós kamera elindítása:
+Feltéve, hogy a felhasznált Rasberry Pi kapcsolódik a wifi hálózatra, csatlakozzunk rá, ez lesz a `[PI terminal]`:
+
+IP: 10.0.0.11
+
+Jelszó: turtlebot
+
+```
+[PI terminal] $ ssh ubuntu@10.0.0.11
+[PI terminal] $ rosrun mecanum_anomaly_det StreamCam.py
+```
+
 ```
 [PC terminal #1] $ roscore
 [PI terminal   ] $ raspi: rosrun mecanum_anomaly_det StreamCam.py
