@@ -161,6 +161,7 @@ Egy teljes lépés több 3 fő részből áll: Először a robot a felvétel hel
   - open_manipulator_controller
     - scripts
       - colorRecognition.py
+      - colorRecognition_sim.py
       - ticTacToe.py
     - srv
       - kinematicsMessage.srv
@@ -195,8 +196,15 @@ Egy teljes lépés több 3 fő részből áll: Először a robot a felvétel hel
   - action
     - kinematicsAction.action
   - scripts
+    - close_gripper.py 
     - inverse_kinematics.py
+    - inverse_kinematics_sim.py 
+    - open_gripper.py 
   - worlds
+    - model.config
+    - model.sdf
+    - ticTacToe.world
+    - ticTacToe_camera_test.world 
     - ticTacToe_camera_test_final.world
   - CMakeLists.txt
   - package.xml 
