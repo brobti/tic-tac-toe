@@ -173,7 +173,6 @@ open_manipulator_tools/scripts/inverse_kinematics.py
   - open_manipulator_controller
     - scripts
       - colorRecognition.py
-      - colorRecognition_sim.py
       - ticTacToe.py
     - srv
       - kinematicsMessage.srv
