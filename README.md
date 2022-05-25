@@ -152,8 +152,54 @@ A bábuk felvétele és lerakása egy mozgássorozat következménye. A mozgáss
 ![alt text](/images/pick-place.png?raw=true)
 #### Move függvény
 Egy teljes lépés több 3 fő részből áll: Először a robot a felvétel helyére mozog, és felveszi a megfelelő bábut. Ezután a megfelelő pozícióra mozog a tábla fölé, majd lehelyezi a bábut. Az utolsó lépés a kiindulási pozícióba való visszatérés. A folyamat az alábbi ábrán követhető:
+
 ![alt text](/images/move.png?raw=true)
 ### A szimuláció és a valós robotirányítás közti eltérések és azok magyarázata
+
+## Releváns módosított fájlok teljes listája:
+- open_manipulator, branch: noetic-devel-mod
+  - open_manipulator_controller
+    - scripts
+      - colorRecognition.py
+      - ticTacToe.py
+    - srv
+      - kinematicsMessage.srv
+  - open_manipulator_description
+    - meshes
+      - hengeresBabuKek/
+      - hengeresBabuPiros/
+      - camera.dae
+      - camera_stand.dae
+      - hengeres_babu_kek.dae 
+      - hengeres_babu_piros.dae
+      - tartos_kamera.dae
+      - tartos_kamera3.dae 
+    - urdf
+      - open_manipulator.gazebo.xacro
+      - open_manipulator.urdf.xacro 
+- open_manipulator_controls, branch: telemanipulator
+  - open_manipulator_controllers
+    - launch
+      - joint_trajectory_controller.launch
+  - open_manipulator_hw
+    - config
+      - pid.yaml 
+    - launch
+      - open_manipulator_gazebo.launch 
+  - open_manipulator_moveit_config
+    - config
+      - kinematics.yaml
+    - launch
+      - moveit.rviz 
+- open_manipulator_tools, branch: ticTacToe
+  - action
+    - kinematicsAction.action
+  - scripts
+    - inverse_kinematics.py
+  - worlds
+    - ticTacToe_camera_test_final.world
+  - CMakeLists.txt
+  - package.xml 
 ### Ismert bugok
 - rostopic pub /option std_msgs/String "print_open_manipulator_setting" -> nem írja ki az infókat a controlleres terminálablakba
 - teleop_keyboard néha random lefagy -> indítsd újra a controllert és a teleop_keyboardot is!
