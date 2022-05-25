@@ -71,6 +71,7 @@ A játék pályája 3x3-as, a robot emellől veszi fel a bábukat, 4 kéket és 
 - https://github.com/brobti/open_manipulator/tree/noetic-devel-mod
 - https://github.com/brobti/open_manipulator_controls/tree/telemanipulator
 - https://github.com/brobti/open_manipulator_tools
+
 A package-ek a dokumentum elején láthatók.
 ### Futtatás
 #### Szimuláció
