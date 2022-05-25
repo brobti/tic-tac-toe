@@ -1,0 +1,29 @@
+[submodule "open_manipulator"]
+	path = open_manipulator
+	url = https://github.com/brobti/open_manipulator.git
+	branch = noetic-devel-mod
+[submodule "open_manipulator_msgs"]
+	path = open_manipulator_msgs
+	url = https://github.com/ROBOTIS-GIT/open_manipulator_msgs.git
+	branch = noetic-devel
+[submodule "open_manipulator_simulations"]
+	path = open_manipulator_simulations
+	url = https://github.com/ROBOTIS-GIT/open_manipulator_simulations.git
+	branch = noetic-devel
+[submodule "open_manipulator_dependencies"]
+	path = open_manipulator_dependencies
+	url = https://github.com/ROBOTIS-GIT/open_manipulator_dependencies.git
+[submodule "open_manipulator_controls"]
+	path = open_manipulator_controls
+	url = https://github.com/brobti/open_manipulator_controls.git
+	branch = telemanipulator
+[submodule "open_manipulator_tools"]
+	path = open_manipulator_tools
+	url = https://github.com/brobti/open_manipulator_tools.git
+	branch = ticTacToe
+[submodule "gazebo_ros_link_attacher"]
+	path = gazebo_ros_link_attacher
+	url = https://github.com/MOGI-ROS/gazebo_ros_link_attacher.git
+[submodule "open_manipulator_ikfast_plugin"]
+	path = open_manipulator_ikfast_plugin
+	url = https://github.com/MOGI-ROS/open_manipulator_ikfast_plugin
