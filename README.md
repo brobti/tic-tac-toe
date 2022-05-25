@@ -207,7 +207,6 @@ open_manipulator_tools/scripts/inverse_kinematics.py
   - scripts
     - close_gripper.py 
     - inverse_kinematics.py
-    - inverse_kinematics_sim.py 
     - open_gripper.py 
   - worlds
     - model.config
