@@ -244,12 +244,10 @@ open_manipulator_tools/scripts/inverse_kinematics.py
   - package.xml 
 ### Ismert bugok
 - A rostopic pub /option std_msgs/String "print_open_manipulator_setting" nem írja ki az információkat a controlleres terminálablakba.
-- A teleop_keyboard néha random lefagy, iylenkor újra kell indítani a controllert és a teleop_keyboardot is.
-- Gazebóban a robot megfogója nyitott állapotban ugrál, zárt állapotban nem.
-- A gravitáció kompenzálásához Dynamixel Wizardban kéne beállítani valamit, amit nem tudtunk telepíteni.
 - A szimulált robotkar nem pontosan az asztallap felületén helyezkedik el, henem kicsivel fölötte.
-- Mivel a szimulált bábuk kinetikai modellek, és bizonyos távolságon túl a robot már nem tudja elérni a megadott letevési magasságot, a legtávolabbi sorba helyezett bábukat kicsit beleteszi az asztalba.
+- Mivel a szimulált bábuk kinetikai modellek, és bizonyos távolságon túl a robot már nem tudja elérni a megadott letevési magasságot, a legtávolabbi sorba helyezett bábukat minimálisan belesüllyeszti az asztalba.
 - Amikor a robot a valóságban nagyobb távolságra tesz le egy bábut, a pálya egyenetlensége miatt esetenként beleütközik abba.
+- A szimulált kamera "átnéz" az asztalon, amikor a robotkar lehajol.
 ## Fejlesztési lehetőségek
 - [ ] A módosított scriptek kiszervezése különálló csomagba.
 - [ ] Ember-robot játék megvalósítása.
